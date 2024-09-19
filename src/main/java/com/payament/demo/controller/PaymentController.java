@@ -9,6 +9,7 @@ import com.payament.demo.model.PaymentRequest;
 import com.payament.demo.model.PaymentResponse;
 import com.payament.demo.service.PaymentService;
 
+
 @RestController
 @RequestMapping("/api")
 @Slf4j
@@ -23,6 +24,7 @@ public class PaymentController {
     @PostMapping("/submit")
     public ResponseEntity<PaymentResponse> submitPayment(@RequestBody PaymentRequest paymentRequest,
             @RequestHeader(value = Constants.CORRELATION_ID, required = false) String correlationId) {
+
 
         log.info("Received payment request: {}", paymentRequest);
 
