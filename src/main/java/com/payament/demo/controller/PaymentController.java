@@ -9,6 +9,8 @@ import com.payament.demo.model.PaymentRequest;
 import com.payament.demo.model.PaymentResponse;
 import com.payament.demo.service.PaymentService;
 
+import java.util.logging.Logger;
+
 
 @RestController
 @RequestMapping("/api")
@@ -16,6 +18,7 @@ import com.payament.demo.service.PaymentService;
 public class PaymentController {
 
     private final PaymentService paymentService;
+    private Logger log;
 
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
@@ -26,12 +29,12 @@ public class PaymentController {
             @RequestHeader(value = Constants.CORRELATION_ID, required = false) String correlationId) {
 
 
-        log.info("Received payment request: {}", paymentRequest);
+        log.info("Received payment request: {} "+paymentRequest);
 
         // Process the payment
         PaymentResponse paymentResponse = paymentService.processPayment(paymentRequest);
 
-        log.info("Payment response: {}", paymentResponse);
+        log.info("Payment response: {}"+paymentResponse);
 
         return ResponseEntity.ok(paymentResponse);
     }
