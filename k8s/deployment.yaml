@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment
+  name: payment-logs
   labels:
-    app: payment
+    app: payment-logs
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment
+      app: payment-logs
   template:
     metadata:
       labels:
-        app: payment
+        app: payment-logs
         version: $IMAGE_TAG
     spec:
       containers:
-        - name: payment
-          image: nitchakan87/payment:$IMAGE_TAG
-          ports:
-            - containerPort: 8085
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
+      - name: payment-logs
+        image: nitchakan87/payment-logs:$IMAGE_TAG
+        ports:
+        - containerPort: 8086
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
