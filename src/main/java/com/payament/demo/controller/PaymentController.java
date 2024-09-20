@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class PaymentController {
 
     private final PaymentService paymentService;
-    private Logger log;
+
 
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
